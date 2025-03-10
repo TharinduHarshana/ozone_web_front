@@ -8,7 +8,7 @@ const initialState={
 
 export const addToCart = createAsyncThunk('cart/addToCart', async ({userId, productId, quantity})=>{
 
-    const response = await axios.post("https://ozone-web-server.vercel.app/api/shop/cart/add",{userId, productId, quantity});
+    const response = await axios.post("https://ozonecomputers.vercel.app/api/shop/cart/add",{userId, productId, quantity});
     console.log(response.data,"response");
     return response.data;
 
@@ -18,7 +18,7 @@ export const addToCart = createAsyncThunk('cart/addToCart', async ({userId, prod
 
 export const fetchCartItems = createAsyncThunk('cart/fetchCartItems', async (userId)=>{
 
-    const response = await axios.get(`https://ozone-web-server.vercel.app/api/shop/cart/get/${userId}`);
+    const response = await axios.get(`https://ozonecomputers.vercel.app/api/shop/cart/get/${userId}`);
     console.log(response.data,"response");
     return response.data;
 
@@ -28,7 +28,7 @@ export const fetchCartItems = createAsyncThunk('cart/fetchCartItems', async (use
 
 export const deleteCartItems = createAsyncThunk('cart/deleteCartItems', async ({userId, productId})=>{
 
-    const response = await axios.delete(`https://ozone-web-server.vercel.app/api/shop/cart/${userId}/${productId}`);
+    const response = await axios.delete(`https://ozonecomputers.vercel.app/api/shop/cart/${userId}/${productId}`);
     return response.data;
 
 
@@ -37,14 +37,14 @@ export const deleteCartItems = createAsyncThunk('cart/deleteCartItems', async ({
 
 export const updateCartQuantity = createAsyncThunk('cart/updateCartQuantity', async ({userId, productId, quantity})=>{
 
-    const response = await axios.put("https://ozone-web-server.vercel.app/api/shop/cart/update-cart",{userId, productId, quantity});
+    const response = await axios.put("https://ozonecomputers.vercel.app/api/shop/cart/update-cart",{userId, productId, quantity});
     return response.data;
 
 
 })
 
 export const clearCart = createAsyncThunk('cart/clearCart', async (userId) => {
-    const response = await axios.delete(`https://ozone-web-server.vercel.app/api/shop/cart/clear/${userId}`);
+    const response = await axios.delete(`https://ozonecomputers.vercel.app/api/shop/cart/clear/${userId}`);
     return response.data;
   });
 

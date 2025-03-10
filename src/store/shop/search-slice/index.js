@@ -10,7 +10,7 @@ export const getSearchResults = createAsyncThunk(
   "/order/getSearchResults",
   async (keyword) => {
     const response = await axios.get(
-      `https://ozone-web-server.vercel.app/api/shop/search/${keyword}`
+      `https://ozonecomputers.vercel.app/api/shop/search/${keyword}`
     );
 
     return response.data;

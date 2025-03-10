@@ -43,7 +43,7 @@ function ProductImageUpload({imageFile, setImageFile, uploadedImageURL, setUploa
         setImageLoadingState(true);
         const data = new FormData();
         data.append('my_file',imageFile);
-        const response = await axios.post('https://ozone-web-server.vercel.app/api/admin/products/upload-image',data);
+        const response = await axios.post('https://ozonecomputers.vercel.app/api/admin/products/upload-image',data);
         console.log(response.data);
         if(response.data?.success){
             setUploadedImageURL(response.data.result.url);

@@ -18,7 +18,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
             sortBy : sortParams
         });
         const result = await axios.get(
-        `https://ozone-web-server.vercel.app/api/shop/products/get?${query}`,
+        `https://ozonecomputers.vercel.app/api/shop/products/get?${query}`,
       );
   
       return result?.data;
@@ -30,7 +30,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     async (id) => {
     
         const result = await axios.get(
-        `https://ozone-web-server.vercel.app/api/shop/products/get/${id}`,
+        `https://ozonecomputers.vercel.app/api/shop/products/get/${id}`,
       );
   
       return result?.data;

@@ -12,7 +12,7 @@ export const addNewProduct = createAsyncThunk(
     "/products/addnewproduct",
     async (formData) => {
       const result = await axios.post(
-        "https://ozone-web-server.vercel.app/api/admin/products/add",
+        "https://ozonecomputers.vercel.app/api/admin/products/add",
         formData,
         {
           headers: {
@@ -31,7 +31,7 @@ export const addNewProduct = createAsyncThunk(
     "/products/fetchAllProducts",
     async () => {
       const result = await axios.get(
-        "https://ozone-web-server.vercel.app/api/admin/products/get",
+        "https://ozonecomputers.vercel.app/api/admin/products/get",
       );
   
       return result?.data;
@@ -45,7 +45,7 @@ export const addNewProduct = createAsyncThunk(
     "/products/editProduct",
     async ({id,formData}) => {
       const result = await axios.put(
-        `https://ozone-web-server.vercel.app/api/admin/products/edit/${id}`,
+        `https://ozonecomputers.vercel.app/api/admin/products/edit/${id}`,
         formData,
         {
           headers: {
@@ -66,7 +66,7 @@ export const addNewProduct = createAsyncThunk(
     "/products/deleteProduct",
     async (id,formData) => {
       const result = await axios.delete(
-        `https://ozone-web-server.vercel.app/api/admin/products/delete/${id}`,
+        `https://ozonecomputers.vercel.app/api/admin/products/delete/${id}`,
         formData,
         {
           headers: {

@@ -12,7 +12,7 @@ export const createNewOrder = createAsyncThunk(
   "/order/createNewOrder",
   async (orderData) => {
     const response = await axios.post(
-      "https://ozone-web-server.vercel.app/api/shop/order/create",
+      "https://ozonecomputers.vercel.app/api/shop/order/create",
       orderData
     );
 
@@ -24,7 +24,7 @@ export const getAllOrdersByUserId = createAsyncThunk(
   "/order/getAllOrdersByUserId",
   async (userId) => {
     const response = await axios.get(
-      `https://ozone-web-server.vercel.app/api/shop/order/list/${userId}`
+      `https://ozonecomputers.vercel.app/api/shop/order/list/${userId}`
     );
 
     return response.data;
@@ -35,7 +35,7 @@ export const getOrderDetails = createAsyncThunk(
   "/order/getOrderDetails",
   async (id) => {
     const response = await axios.get(
-      `https://ozone-web-server.vercel.app/api/shop/order/details/${id}`
+      `https://ozonecomputers.vercel.app/api/shop/order/details/${id}`
     );
 
     return response.data;
