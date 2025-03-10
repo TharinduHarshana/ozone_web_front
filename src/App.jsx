@@ -1,9 +1,9 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton"
 
 import AuthLayout from "./components/auth/layout";
 import AuthRegister from "./pages/auth/register";
-import AuthLogin from "./pages/auth/login";
+import AuthLogin from "./pages/auth/Login";
 import AdminLayout from "./components/admin-view/layout";
 import AdminDashboard from "./pages/admin-view/dashboard";
 import AdminFeatures from "./pages/admin-view/features";
@@ -27,7 +27,6 @@ function App() {
       (state) => state.auth
     );
     const dispatch = useDispatch();
-    const navigate = useNavigate();
   
     useEffect(() => {
       dispatch(checkAuth());
