@@ -150,7 +150,7 @@ function ShoppingHome() {
     return (
       <div className="flex flex-col min-h-screen py-10">
       {/* Banner */}
-        <div className="relative w-full aspect-[16/6] sm:aspect-[16/9] md:aspect-[16/6] overflow-hidden">
+        <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[16/6] overflow-hidden">
         {slides.map((slide, index) => (
           <img
             key={index}
@@ -262,7 +262,7 @@ function ShoppingHome() {
               style={{ scrollSnapType: "x mandatory" }}
             >
               {productList.slice(0, maxProducts).map((productItem) => (
-                <div key={productItem.id} className="min-w-[250px] md:min-w-[300px] scroll-snap-align-start">
+                <div key={productItem.id} className="min-w-[250px] md:min-w-[300px] scroll-snap-align-start md:p-20">
                   <ShoppingProductTile
                     handleGetProductDetails={handleGetProductDetails}
                     product={productItem}
