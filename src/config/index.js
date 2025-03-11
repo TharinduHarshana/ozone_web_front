@@ -138,6 +138,11 @@ export const addProductFormElements = [
       path: "/shop/listing",
     },
     {
+      id: "search",
+      label: "Search",
+      path: "/shop/search",
+    },
+    {
       id: "cctvCamera",
       label: "CCTV Camera",
       path: "/shop/listing",
@@ -156,12 +161,6 @@ export const addProductFormElements = [
       id: "printerAccessories",
       label: "Printer Accessories",
       path: "/shop/listing",
-    },
-
-    {
-      id: "search",
-      label: "Search",
-      path: "/shop/search",
     },
   ];
 
