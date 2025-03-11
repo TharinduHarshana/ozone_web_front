@@ -41,7 +41,7 @@ function TopContactBar() {
   );
 }
 
-function MenuItems() {
+function MenuItems({ onItemClick }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,11 +56,15 @@ function MenuItems() {
         : null;
     sessionStorage.setItem("filters", JSON.stringify(currentFilter));
 
-    location.pathname.includes("listing") && currentFilter !== null
-      ? setSearchParams(new URLSearchParams(`?category=${getCurrentMenuItem.id}`))
-      : navigate(getCurrentMenuItem.path);
-  }
+    if (location.pathname.includes("listing") && currentFilter !== null) {
+      setSearchParams(new URLSearchParams(`?category=${getCurrentMenuItem.id}`));
+    } else {
+      navigate(getCurrentMenuItem.path);
+    }
 
+    // Close sheet if function is passed
+    if (onItemClick) onItemClick();
+  }
   return (
     <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
@@ -155,6 +159,7 @@ function HeaderRightContent() {
 
 function ShoppingHeader() {
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const [openCartSheet, setOpenCartSheet] = useState(false);
   
   return (
     <>
@@ -167,7 +172,7 @@ function ShoppingHeader() {
             <span className="font-bold">Ozone Computers</span>
           </Link>
 
-          <Sheet>
+          <Sheet open={openCartSheet} onOpenChange={setOpenCartSheet}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="lg:hidden">
                 <Menu className="h-6 w-6" />
@@ -175,8 +180,12 @@ function ShoppingHeader() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-full max-w-xs">
-              <MenuItems />
-              {isAuthenticated ? <HeaderRightContent /> : <UnauthHeaderContent />}
+              <MenuItems onItemClick={() => setOpenCartSheet(false)} />
+              {isAuthenticated ? (
+                <HeaderRightContent />
+              ) : (
+                <UnauthHeaderContent />
+              )}
             </SheetContent>
           </Sheet>
 
