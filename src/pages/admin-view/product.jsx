@@ -28,7 +28,8 @@ function AdminProduct(){
     const [imageFile, setImageFile] = useState(null);
     const [uploadedImageURL, setUploadedImageURL] = useState('');
     const [imageLoadingState, setImageLoadingState] = useState(false);
-    const [currentEditedId , setCurrentEditedId] = useState('null');
+    const [currentEditedId , setCurrentEditedId] = useState(null);
+
 
     const { productList } = useSelector(state => state.AdminProducts);
     const dispatch = useDispatch();
@@ -37,54 +38,48 @@ function AdminProduct(){
 
     
 
-function onSubmit(event){
-    event.preventDefault();
-
-
-    currentEditedId !== null ?
-    dispatch(editProduct({
-        id : currentEditedId, formData
-    })).then((data)=>{
-        console.log(data, 'Edit data');
-
-        if (data?.payload?.success){
-            dispatch(fetchAllProducts());
-            setOpenCreateProductDialog(false);
-            setFormData(initialFormData);
-            setCurrentEditedId(null);
-            
-            toast({
-                title: "Product Updated Successfully",
-                description: "Your product has been updated.",
-                variant: "success", // Use correct variant
-            });
-        }
-    })
-
+    async function onSubmit(event) {
+        event.preventDefault();
     
-
-    :dispatch(addNewProduct({
-        ...formData,
-        image : uploadedImageURL
-    })).then((data)=>{
-        console.log(data);
-        if (data?.payload?.success){
-            dispatch(fetchAllProducts());
-            setOpenCreateProductDialog(false);
-            setFormData(initialFormData);
-            setImageFile(null);
-            setUploadedImageURL('');
-            toast({
-                title: "Product Added Successfully",
-                description: "Your product has been added.",
-                variant: "success", // Use correct variant
-            });
+        if (currentEditedId !== null) {
+            const data = await dispatch(editProduct({
+                id: currentEditedId, formData
+            }));
+    
+            if (data?.payload?.success) {
+                dispatch(fetchAllProducts());
+                setOpenCreateProductDialog(false);
+                setFormData(initialFormData);
+                setCurrentEditedId(null);
+    
+                toast({
+                    title: "Product Updated Successfully",
+                    description: "Your product has been updated.",
+                    variant: "success",
+                });
+            }
+        } else {
+            const data = await dispatch(addNewProduct({
+                ...formData,
+                image: uploadedImageURL
+            }));
+    
+            if (data?.payload?.success) {
+                dispatch(fetchAllProducts());
+                setOpenCreateProductDialog(false);
+                setFormData(initialFormData);
+                setImageFile(null);
+                setUploadedImageURL('');
+    
+                toast({
+                    title: "Product Added Successfully",
+                    description: "Your product has been added.",
+                    variant: "success",
+                });
+            }
         }
-    })
-
-
-}
-
+    }
+    
 
 function isFormValid(){
     return Object.keys(formData)
