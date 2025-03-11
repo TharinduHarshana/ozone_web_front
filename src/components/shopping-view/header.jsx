@@ -174,8 +174,8 @@ function ShoppingHeader() {
 
           <Sheet open={openCartSheet} onOpenChange={setOpenCartSheet}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden">
-                <Menu className="h-6 w-6" />
+              <Button variant="outline" size="icon" className="lg:hidden ">
+                <Menu className="h-6 w-6 " />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
