@@ -67,7 +67,7 @@ function MenuItems({ onItemClick }) {
   }
   return (
     <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
-      {shoppingViewHeaderMenuItems.map((menuItem) => (
+      {shoppingViewHeaderMenuItems.slice(0, 7).map((menuItem) => (
         <Label
           onClick={() => handleNavigateListingPage(menuItem)}
           className="text-sm font-medium cursor-pointer"

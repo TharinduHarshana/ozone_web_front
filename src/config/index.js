@@ -143,6 +143,22 @@ export const addProductFormElements = [
       path: "/shop/listing",
     },
     {
+      id: "cctvCameraAccessories",
+      label: "CCTV Camera Accessories",
+      path: "/shop/listing",
+    },
+    {
+      id: "printer",
+      label: "Printer",
+      path: "/shop/listing",
+    },
+    {
+      id: "printerAccessories",
+      label: "Printer Accessories",
+      path: "/shop/listing",
+    },
+
+    {
       id: "search",
       label: "Search",
       path: "/shop/search",
@@ -157,6 +173,9 @@ export const addProductFormElements = [
     desktopAccessories: "Desktop Accessories",
     laptopAccessories: "Laptop Accessories",
     cctvCamera: "CCTV Camera",
+    cctvCameraAccessories: "CCTV Camera Accessories",
+    printer: "Printer",
+    printerAccessories: "Printer Accessories",
   };
   
   export const brandOptionsMap = {
@@ -176,6 +195,10 @@ export const addProductFormElements = [
       { id: "desktopAccessories", label: "Desktop Accessories" },
       { id: "laptopAccessories", label: "Laptop Accessories" },
       { id: "cctvCamera", label: "CCTV Camera" },
+      { id: "cctvCameraAccessories", label: "CCTV Camera Accessories" },
+      { id: "printer", label: "Printer" },
+      { id: "printerAccessories", label: "Printer Accessories" },
+
     ],
     brand: [
       { id: "dell", label: "Dell" },
@@ -184,6 +207,7 @@ export const addProductFormElements = [
       { id: "addlink", label: "Addlink" },
       { id: "hikvision", label: "Hikvision" },
       { id: "hp", label: "HP" },
+      { id: "samsung", label: "Samsung" },
     ],
   };
   
