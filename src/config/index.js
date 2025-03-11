@@ -68,6 +68,9 @@ export const addProductFormElements = [
         { id: "desktopAccessories", label: "Desktop Accessories" },
         { id: "laptopAccessories", label: "Laptop Accessories" },
         { id: "cctvCamera", label: "CCTV Camera" },
+        { id: "cctvCameraAccessories", label: "CCTV Camera Accessories" },
+        { id: "printer", label: "Printer" },
+        { id: "printerAccessories", label: "Printer Accessories" },
       ],
     },
     {
@@ -81,6 +84,7 @@ export const addProductFormElements = [
         { id: "addlink", label: "Addlink" },
         { id: "hikvision", label: "Hikvision" },
         { id: "hp", label: "HP" },
+        { id: "samsung", label: "Samsung" },
       ],
     },
     {
