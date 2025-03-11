@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "./components/ui/skeleton";
 
 import AuthLayout from "./components/auth/layout";
 import AuthRegister from "./pages/auth/register";
@@ -36,69 +36,51 @@ function App() {
   
     return (
         <div className="flex flex-col overflow-hidden bg-white">
-<Routes>
-    {/* Auth Routes */}
-    <Route
-        path="/auth"
-        element={
-        <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-            <AuthLayout />
-        </CheckAuth>
-        }
-    >
-        <Route path="login" element={<AuthLogin />} />
-        <Route path="register" element={<AuthRegister />} />
-    </Route>
+          <Routes>
+            {/* Auth Routes */}
+            <Route path="/auth" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}> <AuthLayout /> </CheckAuth>}>
+                <Route path="login" element={<AuthLogin />} />
+                <Route path="register" element={<AuthRegister />} />
+            </Route>
 
-    {/* Admin Routes */}
-    <Route
-        path="/admin"
-        element={
-        <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-            <AdminLayout />
-        </CheckAuth>
-        }
-    >
-        <Route path="dashboard" element={<AdminDashboard />} />
-        <Route path="product" element={<AdminProduct />} />
-        <Route path="orders" element={<AdminOrders />} />
-        <Route path="features" element={<AdminFeatures />} />
-    </Route>
+            {/* Admin Routes */}
+            <Route path="/admin" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}> <AdminLayout /> </CheckAuth>}>
+                <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="product" element={<AdminProduct />} />
+                <Route path="orders" element={<AdminOrders />} />
+                <Route path="features" element={<AdminFeatures />} />
+            </Route>
 
-    {/* Unified Shop Route: Public + Protected */}
-    <Route path="/shop" element={<ShoppingLayout /> }>
-        {/* Public Pages */}
-        <Route path="home" element={<ShoppingHome isAuthenticated={isAuthenticated} user={user} />} />
-        <Route path="listing" element={<ShoppingListing isAuthenticated={isAuthenticated} user={user} />} />
-        <Route path="search" element={<SearchProduct isAuthenticated={isAuthenticated} user={user} />} />
-   
+            {/* Main Shop Route */}
+            <Route path="/" element={<ShoppingLayout />}>
+                <Route index element={<ShoppingHome isAuthenticated={isAuthenticated} user={user} />} />
+            </Route>
 
+            {/* Shop Routes */}
+            <Route path="/shop" element={<ShoppingLayout />}>
+                <Route path="home" element={<ShoppingHome isAuthenticated={isAuthenticated} user={user} />} />
+                <Route path="listing" element={<ShoppingListing isAuthenticated={isAuthenticated} user={user} />} />
+                <Route path="search" element={<SearchProduct isAuthenticated={isAuthenticated} user={user} />} />
 
-        {/* Protected Pages */}
-        <Route
-        path="checkout"
-        element={
-            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-            <ShoppingCheckout />
-            </CheckAuth>
-        }
-        />
-        <Route
-        path="account"
-        element={
-            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-            <ShoppingAccount />
-            </CheckAuth>
-        }
-        />
-    </Route>
+                {/* Protected Pages */}
+                <Route path="checkout" element={
+                    <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                        <ShoppingCheckout />
+                    </CheckAuth>
+                } />
+                <Route path="account" element={
+                    <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                        <ShoppingAccount />
+                    </CheckAuth>
+                } />
+            </Route>
 
-    {/* Other Routes */}
-    <Route path="/unauth-page" element={<UnauthPage />} />
-    <Route path="*" element={<NotFound />} />
-    </Routes>
-      </div>
+            {/* Other Routes */}
+            <Route path="/unauth-page" element={<UnauthPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
     );
-  }
+}
 
 export default App;
