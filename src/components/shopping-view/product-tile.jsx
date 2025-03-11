@@ -21,7 +21,7 @@ function ShoppingProductTile({ product, handleGetProductDetails, handleAddToCart
   };
 
   return (
-    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center px-4">
+    <Card className="w-full sm:w-[300px] max-w-sm h-[550px] flex flex-col justify-between">
       <div onClick={() => handleGetProductDetails(product?._id)} className="relative">
         <img
           src={product.image}
