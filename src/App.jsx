@@ -65,10 +65,6 @@ function App() {
         <Route path="features" element={<AdminFeatures />} />
     </Route>
 
-    <Route path="/" element={<ShoppingLayout /> }>
-        <Route path="/" element={<ShoppingHome isAuthenticated={isAuthenticated} user={user} />} />
-    </Route>
-
     {/* Unified Shop Route: Public + Protected */}
     <Route path="/shop" element={<ShoppingLayout /> }>
         {/* Public Pages */}
