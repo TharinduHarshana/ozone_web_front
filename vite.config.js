@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Vite configuration
 export default defineConfig({
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {
